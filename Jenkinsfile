@@ -62,7 +62,7 @@ pipeline {
                     groupId: "${GROUP_ID}",
                     version: "${VERSION}",
                     repository: "${MAVEN_REPO}",
-                    credentialsId: 'nexus-credentials',
+                    credentialsId: 'nexus-creds',
                     artifacts: [
                         [
                             artifactId: "${APP_NAME}",
@@ -88,7 +88,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'docker-nexus-credentials',
+                    credentialsId: 'docker-creds',
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
