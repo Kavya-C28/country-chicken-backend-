@@ -62,7 +62,7 @@ pipeline {
                     groupId: "${GROUP_ID}",
                     version: "${VERSION}",
                     repository: "${MAVEN_REPO}",
-                    credentialsId: 'nexus-creds',
+                    credentialsId: 'nexus-cred',
                     artifacts: [
                         [
                             artifactId: "${APP_NAME}",
