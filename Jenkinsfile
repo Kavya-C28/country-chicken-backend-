@@ -9,11 +9,11 @@ pipeline {
     environment {
         APP_NAME         = 'country-chicken-backend'
 
-        NEXUS_MAVEN_URL  = '3.89.152.50:8081'
-        NEXUS_DOCKER_URL = '3.89.152.50:8082'
+        NEXUS_MAVEN_URL  = '13.60.24.108:8081'
+        NEXUS_DOCKER_URL = '13.60.24.108:8082'
 
-        MAVEN_REPO       = 'maven-releases'
-        DOCKER_REPO      = 'docker-releases'
+        MAVEN_REPO       = 'maven-release'
+        DOCKER_REPO      = 'docker-release'
 
         GROUP_ID         = 'com.countrychicken'
         VERSION          = ''
@@ -24,8 +24,8 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'test',
-                    url: 'https://github.com/srikanth78933/country-chicken-backend.git'
+                git branch: 'project-1',
+                    url: 'https://github.com/Kavya-C28/country-chicken-backend-.git'
             }
         }
 
