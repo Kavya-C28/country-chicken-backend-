@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     VERSION = sh(
-                        script: "mvn help:evaluate -Dexpression=project.version -q -DforceStdout",
+                        script: "mvn help:evaluate -Dexpression=project.version -q -DforceStdout | tail -n 1",
                         returnStdout: true
                     ).trim()
 
