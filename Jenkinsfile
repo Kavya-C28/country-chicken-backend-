@@ -33,10 +33,9 @@ pipeline {
             steps {
                 script {
                     VERSION = sh(
-                        script: "mvn help:evaluate -Dexpression=project.version -q -DforceStdout | tail -n 1",
+                        script: "mvn help:evaluate -Dexpression=project.version -q -DforceStdout",
                         returnStdout: true
                     ).trim()
-
                     if (!VERSION) {
                         error "❌ Version not found from pom.xml"
                     }
