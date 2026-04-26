@@ -13,8 +13,8 @@ pipeline {
         NEXUS_DOCKER_URL = '13.60.24.108:8082'   // ✅ FIXED
 
 
-        MAVEN_REPO       = 'maven-release'
-        DOCKER_REPO      = 'docker-release'
+        MAVEN_REPO       = 'maven-releases'
+        DOCKER_REPO      = 'docker-releases'
 
         GROUP_ID         = 'com.countrychicken'
         VERSION          = ''
@@ -96,8 +96,8 @@ pipeline {
 
                     echo "$DOCKER_PASS" | docker login ${NEXUS_DOCKER_URL} -u "$DOCKER_USER" --password-stdin
 
-                    docker push ${NEXUS_DOCKER_URL}/${DOCKER_REPO}/${APP_NAME}:${VERSION} \
-                    docker push ${NEXUS_DOCKER_URL}/${DOCKER_REPO}/${APP_NAME}:latest .
+                    docker push ${NEXUS_DOCKER_URL}/${DOCKER_REPO}/${APP_NAME}:${VERSION} .     
+                    docker push ${NEXUS_DOCKER_URL}/${DOCKER_REPO}/${APP_NAME}:latest
 
                     docker logout ${NEXUS_DOCKER_URL}
                     """
