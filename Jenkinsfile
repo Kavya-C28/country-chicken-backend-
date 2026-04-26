@@ -79,8 +79,8 @@ pipeline {
             steps {
                 sh """
                 docker build \
-                  -t ${NEXUS_DOCKER_URL}/${DOCKER_REPO}/${APP_NAME}:${VERSION} \
-                  -t ${NEXUS_DOCKER_URL}/${DOCKER_REPO}/${APP_NAME}:latest .
+                  -t ${NEXUS_DOCKER_URL}/${docker-release}/${APP_NAME}:${VERSION} \
+                  -t ${NEXUS_DOCKER_URL}/${docker-release}/${APP_NAME}:latest .
                 """
             }
         }
@@ -96,8 +96,8 @@ pipeline {
 
                     echo "$DOCKER_PASS" | docker login ${NEXUS_DOCKER_URL} -u "$DOCKER_USER" --password-stdin
 
-                    docker push ${NEXUS_DOCKER_URL}/${DOCKER_REPO}/${APP_NAME}:${VERSION}
-                    docker push ${NEXUS_DOCKER_URL}/${DOCKER_REPO}/${APP_NAME}:latest
+                    docker push ${NEXUS_DOCKER_URL}/${docker-release}/${APP_NAME}:${VERSION} \
+                    docker push ${NEXUS_DOCKER_URL}/${docker-release}/${APP_NAME}:latest .
 
                     docker logout ${NEXUS_DOCKER_URL}
                     """
